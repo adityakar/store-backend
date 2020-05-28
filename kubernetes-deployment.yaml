@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-store-backend
+  labels:
+    app: nodejs-store
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-store
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: nodejs-store
+        tier: backend
+    spec:
+     containers:
+      - name: nodejs-store-backend
+        image: gcr.io/GOOGLE_CLOUD_PROJECT/nodejs-store-backend:COMMIT_SHA
+        ports:
+        - name: http-server
+          containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: GUESTBOOK_DB_ADDR
+          value: "nodejs-store-mongodb:27017"
