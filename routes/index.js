@@ -43,4 +43,5 @@ router.post('/messages', (req, res) => {
     }
 });
 
+// Export the router method
 module.exports = router;
