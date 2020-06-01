@@ -35,8 +35,8 @@ steps:
   - '-f'
   - 'kubernetes-deployment.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=primary'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=secondary'
 
 # This step deploys the new version of our container image
 # in the hello-cloudbuild Kubernetes Engine cluster.
@@ -47,6 +47,6 @@ steps:
   - '-f'
   - 'kubernetes-service.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=primary'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=secondary'
 # [END cloudbuild]
