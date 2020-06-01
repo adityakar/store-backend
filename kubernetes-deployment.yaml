@@ -16,6 +16,7 @@ spec:
       labels:
         app: nodejs-store
         tier: backend
+        cluster-type: primary-cluster
     spec:
      containers:
       - name: nodejs-store-backend
