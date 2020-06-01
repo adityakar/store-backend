@@ -10,6 +10,31 @@ spec:
  http:
  - route:
    - destination:
-       host: nodejs-store-backend.default.svc.cluster.local   
+       host: nodejs-store-backend.default.svc.cluster.local
+       subset: primary
        port:
          number: 8080
+     weight: 30
+   - destination:
+       host: nodejs-store-backend.default.svc.cluster.local
+       subset: secondary
+       port:
+         number: 8080
+     weight: 70
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: backend-destination-rule
+spec:
+  host: nodejs-store-backend
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
+  subsets:
+  - name: primary
+    labels:
+      cluster-type: primary-cluster
+  - name: secondary
+    labels:
+     cluster-type: secondary-cluster
