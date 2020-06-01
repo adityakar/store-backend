@@ -11,6 +11,7 @@ spec:
     app: nodejs-store
     tier: backend
   ports:
-  - port: 8080
+  - name: http-backend
+    port: 8080
     targetPort: 8080
     protocol: TCP
