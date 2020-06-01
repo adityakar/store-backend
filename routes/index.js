@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 
 router.get('/health-check', (req, res) => {
     console.log(`received request: ${req.method} ${req.url}`)
-    res.send('Ok');
+    res.send('Up');
 });
 
 // Handles GET requests to /messages

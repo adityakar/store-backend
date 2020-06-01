@@ -25,11 +25,9 @@ spec:
           containerPort: 8080
         livenessProbe:
           httpGet:
-            path: /health-check
+            path: "/health-check"
             port: 8080
-          initialDelaySeconds: 10
-          periodSeconds: 5
-          failureThreshold: 2
+          initialDelaySeconds: 20
         env:
         - name: PORT
           value: "8080"
