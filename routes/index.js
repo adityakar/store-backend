@@ -5,6 +5,13 @@ const Message = require('./messages')
 const router = express.Router();
 router.use(bodyParser.json());
 
+// Handles GET requests to health check probe
+
+router.get('/health-check', (req, res) => {
+    console.log(`received request: ${req.method} ${req.url}`)
+    res.send('Ok');
+});
+
 // Handles GET requests to /messages
 router.get('/messages', (req, res) => {
     console.log(`received request: ${req.method} ${req.url}`)
